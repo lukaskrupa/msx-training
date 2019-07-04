@@ -24,7 +24,7 @@
          <intangible/>
          <day0-url xmlns="http://cisco.com/ns/branchinfra-nfvo">
            <dstFile>iosxe_config.txt</dstFile>
-           <url>http://10.201.36.158/day0/ISRv-ManagedDevice-v1.0.0.txt</url>
+           <url>http://10.201.36.158/day0/ISRv-ManagedDevice.txt</url>
            <var>
              <name>DNS_SERVER_1</name>
              <val>64.102.6.247</val>
