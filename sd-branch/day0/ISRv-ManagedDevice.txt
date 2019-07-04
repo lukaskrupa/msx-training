@@ -1,4 +1,19 @@
 !
+!**********************************************************************
+!* Project           : None
+!* Author            : lurueda
+!* Contributors      : lurueda, anmancus
+!* Date created      : 2019-01-28
+!* Version           : 1.0.0
+!* Purpose           : Single IP ISRv for Managed Device
+!* Revision History
+!*
+!* Date        Author      Version    Changes
+!* 2019-01-28  lurueda     1.0.0      Initial Single IP ASAv
+!* 2019-07-01  lurueda     1.0.1      Removes EEM to register using token, seems not needed in 16.11
+!*
+!**********************************************************************
+!
 interface GigabitEthernet1
  ip address ${NICID_0_IP_ADDRESS} ${NICID_0_NETMASK}
  ip nat inside
@@ -69,18 +84,6 @@ ip ssh version 2
 control-plane host
  management-interface GigabitEthernet1 allow ssh
  management-interface GigabitEthernet2 allow https ssh
-!
-!
-event manager applet license_token
- event timer countdown time 60
- action 1.0 syslog msg "Licensing ISRv..."
- action 2.0 cli command "enable"
- action 3.0 cli command "write"
- action 4.0 cli command "license smart register idtoken ${SP_LICENSE_TOKEN} force"
- action 5.0 cli command "config terminal"
- action 6.0 cli command "no event manager applet license_token"
- action 7.0 cli command "do write"
- action 8.0 syslog msg "End of licensing."
 ! ### MSX Config ###
 !
 crypto pki trustpoint msx
@@ -146,5 +149,8 @@ pnp profile msx
 !
 do write
 do license smart register idtoken ${SP_LICENSE_TOKEN} force
+do copy running-config flash:day--1-config
+
+! Leave a space after do copy to ensure that CR is sent
 end
 !
