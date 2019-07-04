@@ -1,0 +1,18 @@
+[
+    {
+      "deviceModelName": "CISCO ASR1001X",
+      "interfaces": [
+        "GigabitEthernet0/0/0",
+        "GigabitEthernet0/0/1",
+        "GigabitEthernet0/0/2",
+        "GigabitEthernet0/0/3",
+        "GigabitEthernet0/0/4",
+        "GigabitEthernet0/0/5"],
+      "defaultlan": "GigabitEthernet0/0/0",
+      "defaultwan": "GigabitEthernet0/0/1",
+      "defaultonboard": "GigabitEthernet0/0/1",
+      "lan": [],
+      "wan": [],
+      "nedId": "cisco-ios"
+    }
+  ]

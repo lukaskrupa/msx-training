@@ -1,0 +1,9 @@
+[
+    {
+      "deviceModelName": "CISCO ISRv",
+      "interfaces": [],
+      "lan": ["GigabitEthernet1"],
+      "wan": ["GigabitEthernet2"],
+      "nedId": "cisco-ios"
+    }
+  ]

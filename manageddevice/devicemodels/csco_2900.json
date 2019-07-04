@@ -1,0 +1,9 @@
+[
+    {
+      "deviceModelName": "CISCO ISR 2911",
+      "interfaces": [],
+      "lan": ["GigabitEthernet0/0"],
+      "wan": ["GigabitEthernet0/1"],
+      "nedId": "cisco-ios"
+    }
+  ]
