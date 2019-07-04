@@ -1,0 +1,159 @@
+!#### UNDO NTP. KEEP DNS DAY -1 CONFIG.
+!
+no ntp
+!
+!####_DAY0_TIMESTAMPS
+!
+service timestamps debug datetime msec
+service timestamps log datetime msec
+!
+!####_DAY0_HOSTNAME_AND_ENABLE_PASSWORD
+!
+hostname $CPE_HOSTNAME
+!
+enable secret 5 $DEV_CUSTOMER_ENABLED_PASSWORD_MD5
+!
+!####_DISABLE_CONSOLE_LOGGING
+!
+no logging console
+!
+!####_DAY0_WAN_INTERFACE
+!
+!
+!interface $DEV_WAN_VLAN_INTERFACE
+!ip address dhcp
+!no shutdown
+!
+!####_DAY0_WAN_INTERFACE_ADDITIONAL_CONFIG_IF_IT_REQUIRES_VLAN_TAG
+!
+!interface $DEV_WAN_VLAN_INTERFACE
+!encapsulation dot1Q $DEV_WAN_VLAN
+!
+!####_DAY0_LOCAL_USER
+!
+aaa new-model
+!
+username $DEV_CUSTOMER_USERNAME privilege 15 secret 5 $DEV_CUSTOMER_PASSWORD_MD5
+!
+aaa authentication login default local
+aaa authorization exec default none
+!
+!####_DAY0_VTY_LINE
+!
+line con 0
+ login authentication default
+ authorization exec none
+ logging synchronous
+ no password
+ exec-timeout 5 0
+!
+line vty 0 4
+ login authentication default
+ authorization exec none
+ no password
+ transport input ssh
+!
+line vty 5 15
+ login authentication default
+ authorization exec none
+ no password
+ transport input ssh
+ exec-timeout 30 0
+ logging synchronous
+!
+no ip finger
+no service udp-small-servers
+no service tcp-small-servers
+no ip domain-lookup
+no ip source-route
+no service config
+no ip bootp server
+no ip http server
+no ip http secure-server
+!
+!####_DAY0_SSH
+!
+ip ssh version 2
+no ip ssh stricthostkeycheck
+!
+!####_DAY0_DNS
+!
+ip domain lookup
+ip domain name $CPE_HOSTNAME
+ip name-server $DEV_CUSTOMER_DNS_1
+ip name-server $DEV_CUSTOMER_DNS_2
+!
+!####_DAY0_GENERATE_CRYPTO_KEY
+!
+crypto key generate rsa modulus 2048 general-keys
+!
+!####_DAY0_FLEXVPN_TO_BE_PUSHED_BY_PNP_NOT_BY_NCS
+aaa new-model
+aaa authorization network default local
+!
+vrf definition MGMT-OVERLAY
+address-family ipv4
+exit-address-family
+!
+crypto ikev2 authorization policy default
+route set interface
+!
+crypto ikev2 proposal IKEv2-prop1
+ encryption aes-cbc-256 aes-cbc-128
+ integrity sha256 sha1
+ group 2 5
+!
+crypto ikev2 policy IKEv2-pol
+ proposal IKEv2-prop1
+!
+crypto ikev2 redirect client
+!
+crypto ikev2 profile MGMT-OVERLAY
+match identity remote fqdn domain $DEV_MGMT_REMOTE_IDENTITY
+!### should be this line, but using line below as workaround: identity local address $CPE_MGMT_IP_ADDRESS
+identity local address $CPE_MGMT_IP_ADDRESS
+
+authentication remote pre-share key $DEV_MGMT_REMOTE_KEY
+authentication local pre-share key $DEV_MGMT_LOCAL_KEY
+dpd 600 2 periodic
+nat keepalive $DEV_NAT_KEEPALIVE
+aaa authorization group psk list default default
+!
+crypto ipsec security-association idle-time 600
+!
+crypto ipsec transform-set MGMT-ENCR esp-aes esp-sha-hmac
+mode transport
+!
+crypto ipsec profile MGMT-OVERLAY
+set transform-set MGMT-ENCR
+set ikev2-profile MGMT-OVERLAY
+!
+crypto call admission limit ike in-negotiation-sa 30
+!
+interface Tunnel$DEV_MGMT_TUNNEL_INTERFACE
+vrf forwarding MGMT-OVERLAY
+
+!### should be this line, but using line below as workaround: ip address $CPE_MGMT_IP_ADDRESS 255.255.255.255
+ip address $CPE_MGMT_IP_ADDRESS 255.255.255.255
+!### removing for now tunnel source $DEV_WAN_PHYSICAL_INTERFACE
+tunnel source $ONBOARDING_INTERFACE
+tunnel destination dynamic
+tunnel mode ipsec ipv4
+ip mtu 1400
+ip tcp adjust-mss 1360
+tunnel protection ipsec profile MGMT-OVERLAY
+!
+crypto ikev2 client flexvpn OVERLAY
+peer 1 $DEV_MGMT_HUB1
+peer 2 $DEV_MGMT_HUB2
+client connect Tunnel$DEV_MGMT_TUNNEL_INTERFACE
+!
+ip route vrf MGMT-OVERLAY $DEV_MGMT_ROUTE Tunnel$DEV_MGMT_TUNNEL_INTERFACE
+!
+snmp-server group ciscogroup v3 auth
+snmp-server community ciscodp RW
+snmp-server user $CPE_SNMP_V3_USER ciscogroup v3 auth md5 $CPE_SNMP_V3_AUTH_PASS priv aes 128 $CPE_SNMP_V3_PRIV_PASS
+!
+control-plane host
+ management-interface Tunnel$DEV_MGMT_TUNNEL_INTERFACE allow ssh https snmp
+!
