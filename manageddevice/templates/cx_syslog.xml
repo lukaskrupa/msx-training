@@ -1,0 +1,18 @@
+<config xmlns="http://tail-f.com/ns/config/1.0">
+  <devices xmlns="http://tail-f.com/ns/ncs">
+  <device>
+    <name>{$DEVICE_NAME}</name>
+      <config>
+      <logging xmlns="urn:ios">
+        <hostname>
+          <host>{$SYSLOG_SERVER}</host>
+        </hostname>
+        <source-interface>
+          <name>Tunnel0</name>
+          <vrf>MGMT-OVERLAY</vrf>
+        </source-interface>
+      </logging>
+      </config>
+  </device>
+  </devices>
+</config>
