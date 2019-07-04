@@ -1,0 +1,27 @@
+<config xmlns="http://tail-f.com/ns/config/1.0">
+  <branch-infra xmlns="http://cisco.com/ns/branch-infra">
+    <branch-cpe>
+      <provider>admin</provider>
+      <var>
+        <name>VBRANCH_DEVICE_TYPE</name>
+        <val>ENCS</val>
+      </var>
+      <vnfd>
+        <name>NFVIS-ISRv-CX</name>
+        <vdu>
+          <name>ISRv-small</name>
+        </vdu>
+      </vnfd>
+      <vnf>
+        <name>ISRv</name>
+        <deployment>ISRv-SIP-CX</deployment>
+        <vnfd>NFVIS-ISRv-CX</vnfd>
+        <vdu>ISRv-small</vdu>
+        <network>
+          <name>wan-net</name>
+          <nicid>1</nicid>
+        </network>
+      </vnf>
+    </branch-cpe>
+  </branch-infra>
+</config>
