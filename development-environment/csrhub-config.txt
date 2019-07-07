@@ -1,0 +1,149 @@
+!
+version 16.9
+service config
+service timestamps debug datetime msec show-timezone
+service timestamps log datetime msec show-timezone
+service password-encryption
+service call-home
+platform qfp utilization monitor load 80
+no platform punt-keepalive disable-kernel-core
+platform console virtual
+platform hardware throughput level MB 100
+!
+hostname csr-mgmt-hub-dev
+!
+boot-start-marker
+boot-end-marker
+!
+!
+enable secret 5 $1$XGJ/$7BR5eGHZPJGDO9JbTxSj6/
+!
+no aaa new-model
+call-home
+ ! If contact email address in call-home is configured as sch-smart-licensing@cisco.com
+ ! the email address configured in Cisco Smart License Portal will be used as contact email address to send SCH notifications.
+ contact-email-addr sch-smart-licensing@cisco.com
+ profile "CiscoTAC-1"
+  active
+  destination transport-method http
+  no destination transport-method email
+!
+ip name-server 173.36.131.10 71.70.168.183 64.102.6.247
+ip domain name cisco.com
+!
+login on-success log
+!
+subscriber templating
+!
+multilink bundle-name authenticated
+!
+license boot level ax
+license smart enable
+diagnostic bootup level minimal
+!
+spanning-tree extend system-id
+!
+username csr_admin privilege 15 secret 5 $1$Xle/$E/687.48.Qs4PL2Q4o/m6.
+!
+redundancy
+crypto ikev2 authorization policy default
+ route set interface
+ route set access-list Inject
+!
+crypto ikev2 proposal IKEv2-prop1
+ encryption aes-cbc-256 aes-cbc-128
+ integrity sha256 sha1
+ group 2 5
+!
+crypto ikev2 policy IKEv2-pol
+ proposal IKEv2-prop1
+!
+!
+crypto ikev2 profile default
+ match identity remote any
+ identity local fqdn mgmt-hub.cloudvpn.com
+ authentication remote pre-share key Cisco1234Admin
+ authentication local pre-share key Cisco1234Admin
+ dpd 600 2 periodic
+ nat keepalive 25
+ aaa authorization group psk list default default
+ virtual-template 1
+!
+crypto logging ikev2
+!
+crypto isakmp policy 10
+ encr aes
+ authentication pre-share
+ group 2
+crypto isakmp key ciscomgmt address 0.0.0.0
+crypto isakmp keepalive 180
+!
+crypto ipsec security-association idle-time 600
+!
+crypto ipsec transform-set NO-ENCR esp-aes esp-sha-hmac
+ mode transport
+!
+crypto ipsec profile default
+ set transform-set NO-ENCR
+ set ikev2-profile default
+!
+crypto call admission limit ike in-negotiation-sa 30
+!
+interface Loopback1
+ description for IKEv2
+ ip address 10.253.254.1 255.255.255.255
+!
+interface GigabitEthernet1
+ description orch-mgmt network
+ ip address 10.32.1.8 255.255.255.0
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+interface Virtual-Template1 type tunnel
+ ip unnumbered Loopback1
+ ip mtu 1400
+ ip tcp adjust-mss 1360
+ tunnel mode ipsec ipv4
+ tunnel protection ipsec profile default
+!
+ip forward-protocol nd
+no ip http server
+no ip http secure-server
+ip http client source-interface GigabitEthernet1
+ip tftp source-interface GigabitEthernet1
+ip route 0.0.0.0 0.0.0.0 10.32.1.1
+!
+ip ssh version 2
+ip ssh server algorithm mac hmac-sha1
+ip ssh server algorithm encryption aes256-ctr
+ip ssh server algorithm hostkey ssh-rsa
+!
+ip access-list extended Inject
+ remark restricts customer mgmt addresses
+ permit ip 10.254.0.0 0.0.255.255 any
+ permit ip 10.128.0.0 0.0.255.255 any
+!
+control-plane
+!
+line con 0
+ exec-timeout 30 0
+ logging synchronous
+ login local
+ stopbits 1
+line vty 0 4
+ exec-timeout 30 0
+ login local
+ transport input ssh
+ transport output ssh
+line vty 5 15
+ exec-timeout 30 0
+ login local
+ transport input ssh
+ transport output ssh
+!
+ntp master 3
+ntp server 2.ntp.esl.cisco.com
+ntp server 1.ntp.esl.cisco.com
+!
+end
