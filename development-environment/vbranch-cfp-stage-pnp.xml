@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns="http://tail-f.com/ns/config/1.0">
+  <pnp xmlns="http://tail-f.com/ned/cisco/pnp">
+    <day0-common xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0" nc:operation="delete">
+      <cfgName>base-vcpe</cfgName>
+    </day0-common>
+  </pnp>
+  <pnp xmlns="http://tail-f.com/ned/cisco/pnp">
+    <day0-common xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0" nc:operation="delete">
+      <cfgName>base-pcpe</cfgName>
+    </day0-common>
+  </pnp>
+  <pnp xmlns="http://tail-f.com/ned/cisco/pnp">
+    <day0-common>
+      <cfgName>base-vcpe</cfgName>
+      <variable>
+        <name>INT_MGMT_SUBNET_DHCP</name>
+        <value>false</value>
+      </variable>
+      <variable>
+        <name>INT_MGMT_SUBNET_GW</name>
+        <value>10.20.1.1</value>
+      </variable>
+      <variable>
+        <name>INT_MGMT_SUBNET_INVERSE_MASK</name>
+        <value>0.0.0.255</value>
+      </variable>
+      <variable>
+        <name>INT_MGMT_SUBNET_IP</name>
+        <value>10.20.1.0</value>
+      </variable>
+      <variable>
+        <name>INT_MGMT_SUBNET_IPVERSION</name>
+        <value>ipv4</value>
+      </variable>
+      <variable>
+        <name>INT_MGMT_SUBNET_NETMASK</name>
+        <value>255.255.255.0</value>
+      </variable>
+      <variable>
+        <name>LOCAL_PRESHARED_KEY</name>
+        <value>Cisco1234Admin</value>
+      </variable>
+      <variable>
+        <name>MGMTHUB_OVERLAY_IP_ADDR</name>
+        <value>10.20.0.1</value>
+      </variable>
+      <variable>
+        <name>MGMTHUB_OVERLAY_NET</name>
+        <value>10.20.0.0/24</value>
+      </variable>
+      <variable>
+        <name>MGMT_HUB_IP</name>
+        <value>10.201.146.144</value>
+      </variable>
+      <variable>
+        <name>REMOTE_ID</name>
+        <value>mgmt-hub.cloudvpn.com</value>
+      </variable>
+      <variable>
+        <name>REMOTE_PRESHARED_KEY</name>
+        <value>Cisco1234Admin</value>
+      </variable>
+      <variable>
+        <name>SECURE_OVERLAY_NAME</name>
+        <value>testvpn</value>
+      </variable>
+      <variable>
+        <name>SOURCE-BRIDGE</name>
+        <value>wan-br</value>
+      </variable>
+    </day0-common>
+  </pnp>
+</config>
