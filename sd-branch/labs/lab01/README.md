@@ -110,6 +110,8 @@ Your XML should look something like this, remember yours should not say LUIS :)
 
 Using the following [guide](../pg/pg-catalog-deployment.xml) as an example, replace the name of the *Catalog Deployment* to add your name to it, at the same time replace the URL that is being used for the source of the day0 to the public web server that has been created!
 
+You can use the following [day0](../pg/day0/ISRv-ManagedDevice.txt) configuration file as an example.
+
 Your XML should look something like this, remember yours should not say LUIS :)
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -138,7 +140,7 @@ Your XML should look something like this, remember yours should not say LUIS :)
          <intangible/>
          <day0-url xmlns="http://cisco.com/ns/branchinfra-nfvo">
            <dstFile>iosxe_config.txt</dstFile>
-           <url>http://135.76.4.80/day0/ISRv-ManagedDevice.txt</url>
+           <url>http://135.76.4.80/day0/LUIS-ISRv-ManagedDevice.txt</url>
            <var>
              <name>DNS_SERVER_1</name>
              <val>64.102.6.247</val>
@@ -302,9 +304,3 @@ Your XML should look something like this, remember yours should not say LUIS :)
   </branch-infra>
 </config>
 ```
-
-**Hint: You need to create your own day0 configuration file with the proper NAT configuration that deals with Single IP scenario**
-
-**Hint: Make sure that the catalog deployment calls for the right VNFD and VDU name you created in Task 1**
-
-**Hint: Feel free to experiment with the variable and see what you get 😄**
