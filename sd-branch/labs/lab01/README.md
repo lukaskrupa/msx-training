@@ -4,7 +4,7 @@
 
 Using the following [guide](../pg/pg-vnfd.xml) as an example, replace the name of the VNFD to add your name to it, at the same time replace the URL that is being used for the source of the VNFD to the public web server that has been created!
 
-Your XML should look something like this:
+Your XML should look something like this, remember yours should not say LUIS :)
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <config xmlns="http://tail-f.com/ns/config/1.0">
@@ -101,5 +101,7 @@ Your XML should look something like this:
   </nfvo>
 </config>
 ```
+**Hint: You need to change the name in 4 different places**
+**Hint: You need to point the URL to the correct server**
 
 # Task 2 -
