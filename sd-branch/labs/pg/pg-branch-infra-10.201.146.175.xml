@@ -60,18 +60,6 @@
         <name>VBRANCH_DEVICE_TYPE</name>
         <val>ENCS-Secure</val>
       </var>
-      <var>
-        <name>contact</name>
-        <val>Luis Rueda</val>
-      </var>
-      <var>
-        <name>email</name>
-        <val>lurueda@cisco.com</val>
-      </var>
-      <var>
-        <name>phone</name>
-        <val>null</val>
-      </var>
       <vnfd>
         <name>NFVIS-ISRv-CX</name>
         <vdu>
