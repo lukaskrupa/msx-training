@@ -276,11 +276,11 @@ Your XML should look something like this, remember yours should not say LUIS :)
       </var>
       <var>
         <name>MGMT_IP_ADDRESS</name>
-        <val>10.254.2.1</val>
+        <val>10.254.2.69</val>
       </var>
       <var>
         <name>MGMT_NET</name>
-        <val>10.254.2.1/32</val>
+        <val>10.254.2.69/32</val>
       </var>
       <var>
         <name>VBRANCH_DEVICE_TYPE</name>
