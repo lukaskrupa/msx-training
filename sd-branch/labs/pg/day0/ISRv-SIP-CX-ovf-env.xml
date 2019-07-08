@@ -1,0 +1,16 @@
+<Environment xmlns:oe="http://schemas.dmtf.org/ovf/environment/1">
+<PropertySection>
+<Property oe:key="com.cisco.csr1000v.config-version.1" oe:value="1.0"/>
+<Property oe:key="com.cisco.csr1000v.enable-ssh-server.1" oe:value="True"/>
+<Property oe:key="com.cisco.csr1000v.login-username.1" oe:value="${SSH_USERNAME}"/>
+<Property oe:key="com.cisco.csr1000v.login-password.1" oe:value="${SSH_PASSWORD}"/>
+<Property oe:key="com.cisco.csr1000v.mgmt-interface.1" oe:value="GigabitEthernet1"/>
+<Property oe:key="com.cisco.csr1000v.mgmt-ipv4-addr.1" oe:value="${NICID_0_IP_ADDRESS}/24"/>
+<Property oe:key="com.cisco.csr1000v.mgmt-ipv4-network.1" oe:value=""/>
+<Property oe:key="com.cisco.csr1000v.license.1" oe:value="${TECH_PACKAGE}"/>
+<Property oe:key="com.cisco.csr1000v.ios-config-0001" oe:value="interface GigabitEthernet1"/>
+<Property oe:key="com.cisco.csr1000v.ios-config-0002" oe:value="ip address ${NICID_0_IP_ADDRESS} ${NICID_0_NETMASK}"/>
+<Property oe:key="com.cisco.csr1000v.ios-config-0003" oe:value="no shut"/>
+<Property oe:key="com.cisco.csr1000v.ios-config-0004" oe:value="exit"/>
+</PropertySection>
+</Environment>

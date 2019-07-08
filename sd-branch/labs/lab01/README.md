@@ -110,7 +110,9 @@ Your XML should look something like this, remember yours should not say LUIS :)
 
 Using the following [guide](../pg/pg-catalog-deployment.xml) as an example, replace the name of the *Catalog Deployment* to add your name to it, at the same time replace the URL that is being used for the source of the day0 to the public web server that has been created!
 
-You can use the following [day0](../pg/day0/ISRv-ManagedDevice.txt) configuration file as an example.
+You can use the following configuration files as an example:
+- [iosxe_config.txt](../pg/day0/ISRv-ManagedDevice.txt)
+- [ovf-env.xml](../pg/day0/ISRv-SIP-CX-ovf-env.xml)
 
 Your XML should look something like this, remember yours should not say LUIS :)
 ```xml
