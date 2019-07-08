@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns="http://tail-f.com/ns/config/1.0">
+  <nfvo xmlns="http://tail-f.com/pkg/tailf-etsi-rel2-nfvo">
+    <vnfd>
+      <id>NFVIS-ASAv</id>
+      <provider>Cisco</provider>
+      <version>1.1.0</version>
+      <product-info-description>Adaptive Security Appliance</product-info-description>
+      <vdu>
+        <id>ASAv10</id>
+        <description>ASAv10</description>
+        <internal-connection-point-descriptor>
+          <id>mgmt</id>
+          <external-connection-point-descriptor>mgmt</external-connection-point-descriptor>
+          <layer-protocol>IPv4</layer-protocol>
+          <interface-id xmlns="http://tail-f.com/pkg/tailf-etsi-rel2-nfvo-nfvis">0</interface-id>
+        </internal-connection-point-descriptor>
+        <virtual-compute-descriptor>ASAv10-compute</virtual-compute-descriptor>
+        <virtual-storage-descriptor>ASAv-small-storage</virtual-storage-descriptor>
+        <software-image-descriptor>
+          <name>ASAv</name>
+          <version>9.10.1</version>
+          <container-format>bare</container-format>
+          <disk-format>qcow2</disk-format>
+          <image>http://10.201.146.134/images/vdu-asav-v9.10.1.tar.gz</image>
+          <image-name xmlns="http://tail-f.com/pkg/tailf-etsi-rel2-nfvo-nfvis">ASAv</image-name>
+          <additional-setting xmlns="http://tail-f.com/pkg/tailf-etsi-rel2-nfvo-nfvis">
+            <id>disk_bus</id>
+            <value>virtio</value>
+          </additional-setting>
+          <additional-setting xmlns="http://tail-f.com/pkg/tailf-etsi-rel2-nfvo-nfvis">
+            <id>serial_console</id>
+            <value>true</value>
+          </additional-setting>
+        </software-image-descriptor>
+        <device-type xmlns="http://tail-f.com/pkg/tailf-etsi-rel2-nfvo-nfvis">
+          <cli>
+            <ned-id>asa-id:cisco-asa</ned-id>
+            <protocol>ssh</protocol>
+          </cli>
+        </device-type>
+        <flavor-name xmlns="http://tail-f.com/pkg/tailf-etsi-rel2-nfvo-nfvis">ASAv10</flavor-name>
+        <day0 xmlns="http://tail-f.com/pkg/tailf-etsi-rel2-nfvo-nfvis">
+          <destination>asav_config.txt</destination>
+          <mandatory/>
+        </day0>
+        <day0 xmlns="http://tail-f.com/pkg/tailf-etsi-rel2-nfvo-nfvis">
+          <destination>bootstrap_config</destination>
+          <mandatory/>
+        </day0>
+      </vdu>
+      <vdu>
+        <id>ASAv30</id>
+        <description>ASAv30</description>
+        <internal-connection-point-descriptor>
+          <id>mgmt</id>
+          <external-connection-point-descriptor>mgmt</external-connection-point-descriptor>
+          <layer-protocol>IPv4</layer-protocol>
+          <interface-id xmlns="http://tail-f.com/pkg/tailf-etsi-rel2-nfvo-nfvis">0</interface-id>
+        </internal-connection-point-descriptor>
+        <virtual-compute-descriptor>ASAv30-compute</virtual-compute-descriptor>
+        <virtual-storage-descriptor>ASAv-large-storage</virtual-storage-descriptor>
+        <software-image-descriptor>
+          <name>ASAv</name>
+          <version>9.10.1</version>
+          <container-format>bare</container-format>
+          <disk-format>qcow2</disk-format>
+          <image>http://10.201.146.134/images/vdu-asav-v9.10.1.tar.gz</image>
+          <image-name xmlns="http://tail-f.com/pkg/tailf-etsi-rel2-nfvo-nfvis">ASAv</image-name>
+          <additional-setting xmlns="http://tail-f.com/pkg/tailf-etsi-rel2-nfvo-nfvis">
+            <id>disk_bus</id>
+            <value>virtio</value>
+          </additional-setting>
+          <additional-setting xmlns="http://tail-f.com/pkg/tailf-etsi-rel2-nfvo-nfvis">
+            <id>serial_console</id>
+            <value>true</value>
+          </additional-setting>
+        </software-image-descriptor>
+        <device-type xmlns="http://tail-f.com/pkg/tailf-etsi-rel2-nfvo-nfvis">
+          <cli>
+            <ned-id>asa-id:cisco-asa</ned-id>
+            <protocol>ssh</protocol>
+          </cli>
+        </device-type>
+        <flavor-name xmlns="http://tail-f.com/pkg/tailf-etsi-rel2-nfvo-nfvis">ASAv10</flavor-name>
+        <day0 xmlns="http://tail-f.com/pkg/tailf-etsi-rel2-nfvo-nfvis">
+          <destination>asav_config.txt</destination>
+          <mandatory/>
+        </day0>
+        <day0 xmlns="http://tail-f.com/pkg/tailf-etsi-rel2-nfvo-nfvis">
+          <destination>bootstrap_config</destination>
+          <mandatory/>
+        </day0>
+      </vdu>
+      <vdu>
+        <id>ASAv5</id>
+        <description>ASAv5</description>
+        <internal-connection-point-descriptor>
+          <id>mgmt</id>
+          <external-connection-point-descriptor>mgmt</external-connection-point-descriptor>
+          <layer-protocol>IPv4</layer-protocol>
+          <interface-id xmlns="http://tail-f.com/pkg/tailf-etsi-rel2-nfvo-nfvis">0</interface-id>
+        </internal-connection-point-descriptor>
+        <virtual-compute-descriptor>ASAv5-compute</virtual-compute-descriptor>
+        <virtual-storage-descriptor>ASAv-small-storage</virtual-storage-descriptor>
+        <software-image-descriptor>
+          <name>ASAv</name>
+          <version>9.10.1</version>
+          <container-format>bare</container-format>
+          <disk-format>qcow2</disk-format>
+          <image>http://10.201.146.134/images/vdu-asav-v9.10.1.tar.gz</image>
+          <image-name xmlns="http://tail-f.com/pkg/tailf-etsi-rel2-nfvo-nfvis">ASAv</image-name>
+          <additional-setting xmlns="http://tail-f.com/pkg/tailf-etsi-rel2-nfvo-nfvis">
+            <id>disk_bus</id>
+            <value>virtio</value>
+          </additional-setting>
+          <additional-setting xmlns="http://tail-f.com/pkg/tailf-etsi-rel2-nfvo-nfvis">
+            <id>serial_console</id>
+            <value>true</value>
+          </additional-setting>
+        </software-image-descriptor>
+        <device-type xmlns="http://tail-f.com/pkg/tailf-etsi-rel2-nfvo-nfvis">
+          <cli>
+            <ned-id>asa-id:cisco-asa</ned-id>
+            <protocol>ssh</protocol>
+          </cli>
+        </device-type>
+        <flavor-name xmlns="http://tail-f.com/pkg/tailf-etsi-rel2-nfvo-nfvis">ASAv10</flavor-name>
+        <day0 xmlns="http://tail-f.com/pkg/tailf-etsi-rel2-nfvo-nfvis">
+          <destination>asav_config.txt</destination>
+          <mandatory/>
+        </day0>
+        <day0 xmlns="http://tail-f.com/pkg/tailf-etsi-rel2-nfvo-nfvis">
+          <destination>bootstrap_config</destination>
+          <mandatory/>
+        </day0>
+      </vdu>
+      <vdu>
+        <id>ASAv50</id>
+        <description>ASAv50</description>
+        <internal-connection-point-descriptor>
+          <id>mgmt</id>
+          <external-connection-point-descriptor>mgmt</external-connection-point-descriptor>
+          <layer-protocol>IPv4</layer-protocol>
+          <interface-id xmlns="http://tail-f.com/pkg/tailf-etsi-rel2-nfvo-nfvis">0</interface-id>
+        </internal-connection-point-descriptor>
+        <virtual-compute-descriptor>ASAv50-compute</virtual-compute-descriptor>
+        <virtual-storage-descriptor>ASAv-large-storage</virtual-storage-descriptor>
+        <software-image-descriptor>
+          <name>ASAv</name>
+          <version>9.10.1</version>
+          <container-format>bare</container-format>
+          <disk-format>qcow2</disk-format>
+          <image>http://10.201.146.134/images/vdu-asav-v9.10.1.tar.gz</image>
+          <image-name xmlns="http://tail-f.com/pkg/tailf-etsi-rel2-nfvo-nfvis">ASAv</image-name>
+          <additional-setting xmlns="http://tail-f.com/pkg/tailf-etsi-rel2-nfvo-nfvis">
+            <id>disk_bus</id>
+            <value>virtio</value>
+          </additional-setting>
+          <additional-setting xmlns="http://tail-f.com/pkg/tailf-etsi-rel2-nfvo-nfvis">
+            <id>serial_console</id>
+            <value>true</value>
+          </additional-setting>
+        </software-image-descriptor>
+        <device-type xmlns="http://tail-f.com/pkg/tailf-etsi-rel2-nfvo-nfvis">
+          <cli>
+            <ned-id>asa-id:cisco-asa</ned-id>
+            <protocol>ssh</protocol>
+          </cli>
+        </device-type>
+        <flavor-name xmlns="http://tail-f.com/pkg/tailf-etsi-rel2-nfvo-nfvis">ASAv10</flavor-name>
+        <day0 xmlns="http://tail-f.com/pkg/tailf-etsi-rel2-nfvo-nfvis">
+          <destination>asav_config.txt</destination>
+          <mandatory/>
+        </day0>
+        <day0 xmlns="http://tail-f.com/pkg/tailf-etsi-rel2-nfvo-nfvis">
+          <destination>bootstrap_config</destination>
+          <mandatory/>
+        </day0>
+      </vdu>
+      <virtual-compute-descriptor>
+        <id>ASAv10-compute</id>
+        <virtual-memory>
+          <virtual-memory-size>2.0</virtual-memory-size>
+        </virtual-memory>
+        <virtual-cpu>
+          <number-of-virtual-cpus>1</number-of-virtual-cpus>
+        </virtual-cpu>
+      </virtual-compute-descriptor>
+      <virtual-compute-descriptor>
+        <id>ASAv30-compute</id>
+        <virtual-memory>
+          <virtual-memory-size>8.0</virtual-memory-size>
+        </virtual-memory>
+        <virtual-cpu>
+          <number-of-virtual-cpus>4</number-of-virtual-cpus>
+        </virtual-cpu>
+      </virtual-compute-descriptor>
+      <virtual-compute-descriptor>
+        <id>ASAv5-compute</id>
+        <virtual-memory>
+          <virtual-memory-size>1.5</virtual-memory-size>
+        </virtual-memory>
+        <virtual-cpu>
+          <number-of-virtual-cpus>1</number-of-virtual-cpus>
+        </virtual-cpu>
+      </virtual-compute-descriptor>
+      <virtual-compute-descriptor>
+        <id>ASAv50-compute</id>
+        <virtual-memory>
+          <virtual-memory-size>16.0</virtual-memory-size>
+        </virtual-memory>
+        <virtual-cpu>
+          <number-of-virtual-cpus>8</number-of-virtual-cpus>
+        </virtual-cpu>
+      </virtual-compute-descriptor>
+      <virtual-storage-descriptor>
+        <id>ASAv-large-storage</id>
+        <type-of-storage>root</type-of-storage>
+        <size-of-storage>16</size-of-storage>
+      </virtual-storage-descriptor>
+      <virtual-storage-descriptor>
+        <id>ASAv-small-storage</id>
+        <type-of-storage>root</type-of-storage>
+        <size-of-storage>8</size-of-storage>
+      </virtual-storage-descriptor>
+      <virtual-link-descriptor>
+        <id>mgmt</id>
+        <connectivity-type>
+          <layer-protocol>IPv4</layer-protocol>
+        </connectivity-type>
+      </virtual-link-descriptor>
+      <external-connection-point-descriptor>
+        <id>mgmt</id>
+        <virtual-link-descriptor>mgmt</virtual-link-descriptor>
+        <layer-protocol>IPv4</layer-protocol>
+        <management xmlns="http://tail-f.com/pkg/tailf-etsi-rel2-nfvo-nfvis"/>
+      </external-connection-point-descriptor>
+      <deployment-flavor>
+        <id>NFVIS-ASAv</id>
+        <vdu-profile>
+          <vdu>ASAv10</vdu>
+          <min-number-of-instances>1</min-number-of-instances>
+          <max-number-of-instances>1</max-number-of-instances>
+        </vdu-profile>
+        <vdu-profile>
+          <vdu>ASAv30</vdu>
+          <min-number-of-instances>1</min-number-of-instances>
+          <max-number-of-instances>1</max-number-of-instances>
+        </vdu-profile>
+        <vdu-profile>
+          <vdu>ASAv5</vdu>
+          <min-number-of-instances>1</min-number-of-instances>
+          <max-number-of-instances>1</max-number-of-instances>
+        </vdu-profile>
+        <vdu-profile>
+          <vdu>ASAv50</vdu>
+          <min-number-of-instances>1</min-number-of-instances>
+          <max-number-of-instances>1</max-number-of-instances>
+        </vdu-profile>
+        <instantiation-level>
+          <id>NFVIS-ASAv</id>
+          <vdu-level>
+            <vdu>ASAv10</vdu>
+            <number-of-instances>1</number-of-instances>
+          </vdu-level>
+          <vdu-level>
+            <vdu>ASAv30</vdu>
+            <number-of-instances>1</number-of-instances>
+          </vdu-level>
+          <vdu-level>
+            <vdu>ASAv5</vdu>
+            <number-of-instances>1</number-of-instances>
+          </vdu-level>
+          <vdu-level>
+            <vdu>ASAv50</vdu>
+            <number-of-instances>1</number-of-instances>
+          </vdu-level>
+        </instantiation-level>
+        <default-instantiation-level>NFVIS-ASAv</default-instantiation-level>
+      </deployment-flavor>
+    </vnfd>
+  </nfvo>
+</config>
