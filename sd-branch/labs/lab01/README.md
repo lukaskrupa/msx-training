@@ -204,3 +204,107 @@ Your XML should look something like this, remember yours should not say LUIS :)
 **Hint: You need to create your own day0 configuration file with the proper NAT configuration that deals with Single IP scenario**
 
 **Hint: Make sure that the catalog deployment calls for the right VNFD and VDU name you created in Task 1**
+
+**Hint: Feel free to experiment with the variable and see what you get 😄**
+
+## Task 3 - Create your Branch-Infra
+
+Using the following [guide](../pg/pg-branch-infra-10.201.146.175.xml) as an example, replace:
+
+- Name of CPE
+- Serial number to be used
+- mgmt-ip-address must be unique
+- Replace HOST_WAN_GATEWAY with 135.76.4.254
+- Replace HOST_WAN_IP with the IP of your ENCS
+- Replace deployment, vnfd and vdu to match the ones you created in Task 1 and Task 2
+
+Your XML should look something like this, remember yours should not say LUIS :)
+```xml
+<config xmlns="http://tail-f.com/ns/config/1.0">
+  <branch-infra xmlns="http://cisco.com/ns/branch-infra">
+    <branch-cpe>
+      <name>LUISENCS</name>
+      <provider>admin</provider>
+      <type>ENCS-Secure</type>
+      <username>LJqHOtqQyUfcdEOx</username>
+      <password>$8$B3AHoth6MI9ZS0G/7yCHcVh6YqPP4mv1EATNFnJIbJM=</password>
+      <serial>FGL205210E6</serial>
+      <mgmt-ip-address>10.254.2.69</mgmt-ip-address>
+      <var>
+        <name>HOST_WAN_GATEWAY</name>
+        <val>135.76.4.254</val>
+      </var>
+      <var>
+        <name>HOST_WAN_IP</name>
+        <val>135.76.4.16</val>
+      </var>
+      <var>
+        <name>HOST_WAN_IP_CIDRMASK</name>
+        <val>24</val>
+      </var>
+      <var>
+        <name>HOST_WAN_IP_MASK</name>
+        <val>255.255.255.0</val>
+      </var>
+      <var>
+        <name>INT_MGMT_SUBNET_GW</name>
+        <val>10.253.0.1</val>
+      </var>
+      <var>
+        <name>INT_MGMT_SUBNET_INVERSE_MASK</name>
+        <val>0.0.0.7</val>
+      </var>
+      <var>
+        <name>INT_MGMT_SUBNET_IP</name>
+        <val>10.253.0.0</val>
+      </var>
+      <var>
+        <name>INT_MGMT_SUBNET_NETMASK</name>
+        <val>255.255.255.248</val>
+      </var>
+      <var>
+        <name>MGMTHUB_OVERLAY_NET_IP</name>
+        <val>10.20.0.0</val>
+      </var>
+      <var>
+        <name>MGMTHUB_OVERLAY_NET_MASK</name>
+        <val>255.255.255.0</val>
+      </var>
+      <var>
+        <name>MGMT_IP_ADDRESS</name>
+        <val>10.254.2.1</val>
+      </var>
+      <var>
+        <name>MGMT_NET</name>
+        <val>10.254.2.1/32</val>
+      </var>
+      <var>
+        <name>VBRANCH_DEVICE_TYPE</name>
+        <val>ENCS-Secure</val>
+      </var>
+      <vnfd>
+        <name>NFVIS-ISRv-CX</name>
+        <vdu>
+          <name>ISRv-small</name>
+        </vdu>
+      </vnfd>
+      <vnf>
+        <name>LUIS</name>
+        <deployment>LUIS-ISRv-SIP</deployment>
+        <vnfd>LUIS-ISRv</vnfd>
+        <vdu>ISRv-small</vdu>
+        <network>
+          <name>wan-net</name>
+          <nicid>1</nicid>
+        </network>
+      </vnf>
+    </branch-cpe>
+  </branch-infra>
+</config>
+```
+
+**Hint: You need to create your own day0 configuration file with the proper NAT configuration that deals with Single IP scenario**
+
+**Hint: Make sure that the catalog deployment calls for the right VNFD and VDU name you created in Task 1**
+
+**Hint: Feel free to experiment with the variable and see what you get 😄**
