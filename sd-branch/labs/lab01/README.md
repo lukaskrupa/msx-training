@@ -1,6 +1,6 @@
 # Lab 1 - Using the Development Environment
 
-# Task 1 - Create your VNFD
+## Task 1 - Create your VNFD
 
 Using the following [guide](../pg/pg-vnfd.xml) as an example, replace the name of the VNFD to add your name to it, at the same time replace the URL that is being used for the source of the VNFD to the public web server that has been created!
 
@@ -106,4 +106,101 @@ Your XML should look something like this, remember yours should not say LUIS :)
 
 **Hint: You need to point the URL to the correct server**
 
-# Task 2 -
+## Task 2 - Create your Catalog Deployment
+
+Using the following [guide](../pg/pg-catalog-deployment.xml) as an example, replace the name of the *Catalog Deployment* to add your name to it, at the same time replace the URL that is being used for the source of the day0 to the public web server that has been created!
+
+Your XML should look something like this, remember yours should not say LUIS :)
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+ <config xmlns="http://tail-f.com/ns/config/1.0">
+   <catalog xmlns="http://cisco.com/ns/branch-infra-common">
+     <name>vBranch</name>
+       <deployment>
+         <name>LUIS-ISRv-SIP</name>
+         <bootup-time>600</bootup-time>
+         <recovery-wait-time>0</recovery-wait-time>
+         <single-ip-mode/>
+         <var>
+           <name>ngio</name>
+           <val>enable</val>
+         </var>
+         <vnfd>
+           <name>LUIS-ISRv</name>
+           <vdu>
+             <name>ISRv-small</name>
+           </vdu>
+         </vnfd>
+         <polling-frequency>15</polling-frequency>
+         <vnf-port>22</vnf-port>
+         <port-start-range>22051</port-start-range>
+         <port-end-range>22054</port-end-range>
+         <intangible/>
+         <day0-url xmlns="http://cisco.com/ns/branchinfra-nfvo">
+           <dstFile>iosxe_config.txt</dstFile>
+           <url>http://135.76.4.80/day0/ISRv-ManagedDevice.txt</url>
+           <var>
+             <name>DNS_SERVER_1</name>
+             <val>64.102.6.247</val>
+           </var>
+           <var>
+             <name>DNS_SERVER_2</name>
+             <val>171.70.168.183</val>
+           </var>
+           <var>
+             <name>DNS_SERVER_3</name>
+             <val>173.36.131.10</val>
+           </var>
+           <var>
+             <name>NTP_SERVER_1</name>
+             <val>1.ntp.esl.cisco.com</val>
+           </var>
+           <var>
+             <name>SP_ENABLESECRET_VR</name>
+             <val>C1sc0123$</val>
+           </var>
+           <var>
+             <name>SP_LICENSE_BANDWIDTH</name>
+             <val>100</val>
+           </var>
+           <var>
+             <name>SP_LICENSE_TOKEN</name>
+             <val>NjEzNjZlZTAtOGYwZi00NDE4LTgzOGYtYjkxNzE1ZDFmYTQ3LTE1NjM0ODI2%0AODk2MjZ8RkhWZHJNVTgyenJydmVVYjdOY2RVbHZHVElEMFdad0NCNXZYak5U%0AQWlzST0%3D%0A</val>
+           </var>
+           <var>
+             <name>SSH_PASSWORD</name>
+             <val>C1sc0123$</val>
+           </var>
+           <var>
+             <name>SSH_USERNAME</name>
+             <val>admin</val>
+           </var>
+           <var>
+             <name>MSX_FQDN</name>
+             <val>cxmsxp2i1.ciscovms.com</val>
+           </var>
+         </day0-url>
+         <day0-url xmlns="http://cisco.com/ns/branchinfra-nfvo">
+           <dstFile>ovf-env.xml</dstFile>
+           <url>http://135.76.4.80/day0/ISRv-SIP-CX-ovf-env.xml</url>
+           <var>
+             <name>SSH_PASSWORD</name>
+             <val>C1sc0123$</val>
+           </var>
+           <var>
+             <name>SSH_USERNAME</name>
+             <val>cisco</val>
+           </var>
+           <var>
+             <name>TECH_PACKAGE</name>
+             <val>ax</val>
+           </var>
+         </day0-url>
+       </deployment>
+   </catalog>
+ </config>
+```
+
+**Hint: You need to create your own day0 configuration file with the proper NAT configuration that deals with Single IP scenario**
+
+**Hint: Make sure that the catalog deployment calls for the right VNFD and VDU name you created in Task 1**
