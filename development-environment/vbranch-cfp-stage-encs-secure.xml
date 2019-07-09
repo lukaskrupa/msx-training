@@ -1,6 +1,12 @@
 <config xmlns="http://tail-f.com/ns/config/1.0">
   <catalog xmlns="http://cisco.com/ns/branch-infra-common">
     <name>vBranch</name>
+    <global>
+      <var>
+        <name>ENABLE_CERT</name>
+        <val>false</val>
+      </var>
+    </global>
       <branch-cpe>
         <name>ENCS-Secure</name>
         <physical>false</physical>
