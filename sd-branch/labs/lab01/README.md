@@ -213,6 +213,108 @@ Your XML should look something like this, remember yours should not say LUIS :)
 
 ## Task 3 - Create your Branch-Infra
 
+### Task 3a - Onboard ENCS into vBranch CFP
+
+The first step is to onboard ENCS into vBranch CFP, without any VNFDs or VNFs. We want to do this to make sure that Secure Overlay tunnel comes up via csrhub.
+
+Using the following XML, modify the following:
+- Name of the CPE
+- Serial Number to be used
+- *<mgmt-ip-address>* , change this to something unique
+- *<var> MGMT_IP_ADDRESS* , change this to the same value as <mgmt-ip-address>
+- *<var> MGMT_NET*, change this to the same value as <mgmt-ip-address> and add `/32`
+
+```xml
+<config xmlns="http://tail-f.com/ns/config/1.0">
+  <branch-infra xmlns="http://cisco.com/ns/branch-infra">
+    <branch-cpe>
+      <name>LUISENCS</name>
+      <provider>admin</provider>
+      <type>ENCS-Secure</type>
+      <username>LJqHOtqQyUfcdEOx</username>
+      <password>$8$B3AHoth6MI9ZS0G/7yCHcVh6YqPP4mv1EATNFnJIbJM=</password>
+      <serial>FGL205210E6</serial>
+      <mgmt-ip-address>10.254.2.69</mgmt-ip-address>
+      <var>
+        <name>HOST_WAN_GATEWAY</name>
+        <val>135.76.4.254</val>
+      </var>
+      <var>
+        <name>HOST_WAN_IP</name>
+        <val>135.76.4.16</val>
+      </var>
+      <var>
+        <name>HOST_WAN_IP_CIDRMASK</name>
+        <val>24</val>
+      </var>
+      <var>
+        <name>HOST_WAN_IP_MASK</name>
+        <val>255.255.255.0</val>
+      </var>
+      <var>
+        <name>INT_MGMT_SUBNET_GW</name>
+        <val>10.253.0.1</val>
+      </var>
+      <var>
+        <name>INT_MGMT_SUBNET_INVERSE_MASK</name>
+        <val>0.0.0.7</val>
+      </var>
+      <var>
+        <name>MGMTHUB_OVERLAY_NET_IP</name>
+        <val>10.20.0.0</val>
+      </var>
+      <var>
+        <name>MGMTHUB_OVERLAY_NET_MASK</name>
+        <val>255.255.255.0</val>
+      </var>
+      <var>
+        <name>MGMT_IP_ADDRESS</name>
+        <val>10.254.2.69</val>
+      </var>
+      <var>
+        <name>MGMT_NET</name>
+        <val>10.254.2.69/32</val>
+      </var>
+      <var>
+        <name>VBRANCH_DEVICE_TYPE</name>
+        <val>ENCS-Secure</val>
+      </var>
+    </branch-cpe>
+  </branch-infra>
+</config>
+```
+
+#### Validation Commands
+
+To validate use the following commands:
+
+`show branch-infra:branch-infra-status branch-cpe <CPE_NAME> plan` from NSO
+```
+admin@ncs# show branch-infra:branch-infra-status branch-cpe CISCOCXTEST plan
+                                                                                                                                       VM
+NAME         TYPE        REAL NAME    CPE  PROVIDER  TENANT  IMAGE  FLAVOR  VDU  VDUS  VNFD  VNF  DEVICE                   DEPLOYMENT  GROUP  STATE         STATUS   WHEN                 ref  MESSAGE
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+self         self        CISCOCXTEST  -    -         -       -      -       -    -     -     -    -                        -           -      init          reached  2019-07-09T07:41:33  -
+                                                                                                                                              ready         reached  2019-07-09T07:46:27  -
+CISCOCXTEST  branch-cpe  CISCOCXTEST  -    admin     -       -      -       -    -     -     -    CISCOCXTEST_ENCS-Secure  -           -      init          reached  2019-07-09T07:41:33  -
+                                                                                                                                              pnp-callhome  reached  2019-07-09T07:41:33  -
+                                                                                                                                              ready         reached  2019-07-09T07:46:27  -    Ready in secure_overlay mode
+```
+
+- `show secure-overlay` from ENCS CLI
+```
+CISCOCXTEST# show secure-overlay
+                ACTIVE
+                LOCAL   STATE
+NAME     STATE  BRIDGE  DETAILS
+---------------------------------
+mgmtvpn  up     wan-br
+```
+
+### Task 3b - Onboard VNFDs and VNF into ENCS
+
+**Note: Do not proceed until you have onboarded ENCS successfully in Task 3a**
+
 Using the following [guide](../pg/pg-branch-infra-10.201.146.175.xml) as an example, replace:
 
 - Name of CPE
