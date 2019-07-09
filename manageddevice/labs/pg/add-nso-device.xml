@@ -21,6 +21,9 @@
           <protocol>ssh</protocol>
         </cli>
       </device-type>
+      <state>
+        <admin-state>unlocked</admin-state>
+      </state>
     </device>
   </devices>
 </config>
