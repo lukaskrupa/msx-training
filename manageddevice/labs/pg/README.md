@@ -4,6 +4,37 @@
 
 Apply configuration found [here](./add-nso-device.xml), replace the IPs and passwords with the ones for your device.
 
+```xml
+<config xmlns="http://tail-f.com/ns/config/1.0">
+  <devices xmlns="http://tail-f.com/ns/ncs">
+    <authgroups>
+      <group>
+        <name>mdtest</name>
+        <default-map>
+          <remote-name>admin</remote-name>
+          <remote-password>$8$RTItJGPnlthsNnZCCG1yqbgDiIDPYCKGgqeiEN4C9+E=</remote-password>
+          <remote-secondary-password>$8$5sUGt9FWG9P2sGbKnUcz+X38AsFuDz+p4LupjWV8AtM=</remote-secondary-password>
+        </default-map>
+      </group>
+    </authgroups>
+    <device>
+      <name>MDTEST</name>
+      <address>10.201.146.175</address>
+      <authgroup>mdtest</authgroup>
+      <device-type>
+        <cli>
+          <ned-id xmlns:ios-id="urn:ios-id">ios-id:cisco-ios</ned-id>
+          <protocol>ssh</protocol>
+        </cli>
+      </device-type>
+      <state>
+        <admin-state>unlocked</admin-state>
+      </state>
+    </device>
+  </devices>
+</config>
+```
+
 Once onboarded from NSO execute:
 
 ```
@@ -60,7 +91,7 @@ diff
 </devices>
 ```
 
-Replace the device name with *{$DEVICE_NAME}* and add the *<config>* tag and anything you want to convert to variables.
+Replace the device name with `{$DEVICE_NAME}` and add the `<config>` tag and anything you want to convert to variables.
 The config should look like this:
 
 ```xml
