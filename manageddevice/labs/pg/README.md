@@ -120,4 +120,4 @@ The config should look like this:
 </config>
 ```
 
-Save the file with XML extension and upload to MSX. An example can be found [here](../../cx_loopback.xml)
+Save the file with XML extension and upload to MSX. An example can be found [here](../../templates/cx_loopback.xml)
