@@ -279,6 +279,22 @@ Using the following XML, modify the following:
         <name>VBRANCH_DEVICE_TYPE</name>
         <val>ENCS-Secure</val>
       </var>
+      <var>
+        <name>INT_MGMT_SUBNET_GW</name>
+        <val>10.253.0.1</val>
+      </var>
+      <var>
+        <name>INT_MGMT_SUBNET_INVERSE_MASK</name>
+        <val>0.0.0.7</val>
+      </var>
+      <var>
+        <name>INT_MGMT_SUBNET_IP</name>
+        <val>10.253.0.0</val>
+      </var>
+      <var>
+        <name>INT_MGMT_SUBNET_NETMASK</name>
+        <val>255.255.255.248</val>
+      </var>
     </branch-cpe>
   </branch-infra>
 </config>
