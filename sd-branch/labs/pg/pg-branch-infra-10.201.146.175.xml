@@ -60,6 +60,10 @@
         <name>VBRANCH_DEVICE_TYPE</name>
         <val>ENCS-Secure</val>
       </var>
+      <var>
+        <name>MSX_FQDN</name>
+        <val>cxmsxp2i1.ciscovms.com</val>
+      </var>
       <vnfd>
         <name>NFVIS-ISRv-CX</name>
         <vdu>

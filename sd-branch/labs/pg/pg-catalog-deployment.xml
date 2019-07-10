@@ -61,10 +61,6 @@
              <name>SSH_USERNAME</name>
              <val>admin</val>
            </var>
-           <var>
-             <name>MSX_FQDN</name>
-             <val>cxmsxp2i1.ciscovms.com</val>
-           </var>
          </day0-url>
          <day0-url xmlns="http://cisco.com/ns/branchinfra-nfvo">
            <dstFile>ovf-env.xml</dstFile>

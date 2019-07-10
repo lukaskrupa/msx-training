@@ -6,6 +6,10 @@
         <name>VBRANCH_DEVICE_TYPE</name>
         <val>ENCS</val>
       </var>
+      <var>
+        <name>MSX_FQDN</name>
+        <val>$MSX_FQDN</val>
+      </var>
       <vnfd>
         <name>NFVIS-ISRv-CX</name>
         <vdu>
