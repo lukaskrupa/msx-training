@@ -25,6 +25,10 @@ CISCOCXTEST  branch-cpe  CISCOCXTEST  -    admin     -       -      -       -   
                                                                                                                                               ready         reached  2019-07-09T07:46:27  -    Ready in secure_overlay mode
 ```
 
+### Connect to NSO
+
+`ncs_cli -u admin -C`
+
 ## NFVIS Commands
 
 ### Checking Secure-Overlay
