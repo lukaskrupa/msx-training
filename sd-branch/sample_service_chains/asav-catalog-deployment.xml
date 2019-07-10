@@ -7,7 +7,7 @@
         <bootup-time>600</bootup-time>
         <recovery-wait-time>0</recovery-wait-time>
         <vnfd>
-          <name>NFVIS-ASAv</name>
+          <name>NFVIS-ASAv-CX</name>
           <vdu>
             <name>ASAv5</name>
           </vdu>
