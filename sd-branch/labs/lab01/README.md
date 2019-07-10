@@ -30,7 +30,7 @@ Your XML should look something like this, remember yours should not say LUIS :)
         <version>16.11.1b</version>
         <container-format>bare</container-format>
         <disk-format>qcow2</disk-format>
-        <image>http://135.76.4.80/images/isrv-universalk9.16.11.01b.tar.gz</image>
+        <image>http://135.76.4.203/isrv-universalk9.16.11.01b.tar.gz</image>
         <image-name xmlns="http://tail-f.com/pkg/tailf-etsi-rel2-nfvo-nfvis">ISRv</image-name>
         <additional-setting xmlns="http://tail-f.com/pkg/tailf-etsi-rel2-nfvo-nfvis">
           <id>disk_bus</id>
@@ -142,7 +142,7 @@ Your XML should look something like this, remember yours should not say LUIS :)
          <intangible/>
          <day0-url xmlns="http://cisco.com/ns/branchinfra-nfvo">
            <dstFile>iosxe_config.txt</dstFile>
-           <url>http://135.76.4.80/day0/LUIS-ISRv-ManagedDevice.txt</url>
+           <url>http://135.76.4.203/day0/LUIS-ISRv-ManagedDevice.txt</url>
            <var>
              <name>DNS_SERVER_1</name>
              <val>64.102.6.247</val>
@@ -186,7 +186,7 @@ Your XML should look something like this, remember yours should not say LUIS :)
          </day0-url>
          <day0-url xmlns="http://cisco.com/ns/branchinfra-nfvo">
            <dstFile>ovf-env.xml</dstFile>
-           <url>http://135.76.4.80/day0/ISRv-SIP-CX-ovf-env.xml</url>
+           <url>http://135.76.4.203/day0/ISRv-SIP-CX-ovf-env.xml</url>
            <var>
              <name>SSH_PASSWORD</name>
              <val>C1sc0123$</val>
