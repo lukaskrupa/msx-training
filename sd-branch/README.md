@@ -47,3 +47,14 @@ NAME     STATE  BRIDGE  DETAILS
 ---------------------------------
 mgmtvpn  up     wan-br
 ```
+
+### Cleanup of NFVIS after a failed deployment
+
+1. Remove deployments `no vm_lifecycle tenants tenant admin deployments deployment <NAME>`
+2. Remove single-ip-mode `no single-ip-mode`
+3. Remove secure-overlay `no secure-overlay`
+4. Remove users created by NSO
+5. Remove networks created by NSO
+6. Remove images created by NSO
+7. Remove flavors created by NSO
+8. Restart PnP Client `pnp action command restart`
