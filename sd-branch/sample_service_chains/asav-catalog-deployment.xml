@@ -29,7 +29,7 @@
         <enable-commit-queue>false</enable-commit-queue>
         <day0-url xmlns="http://cisco.com/ns/branchinfra-nfvo">
           <dstFile>asav_config.txt</dstFile>
-          <url>http://10.201.36.158/day0/ASAv-SIP-CX-M-day0-config.txt</url>
+          <url>http://10.201.36.158/day0/ASAv-CX-M-day0-config.txt</url>
           <var>
             <name>PLATFORM_THROUGHPUT_LEVEL_VFW</name>
             <val>100M</val>
