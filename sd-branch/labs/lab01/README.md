@@ -233,7 +233,7 @@ Using the following XML, modify the following:
       <type>ENCS-Secure</type>
       <username>LJqHOtqQyUfcdEOx</username>
       <password>$8$B3AHoth6MI9ZS0G/7yCHcVh6YqPP4mv1EATNFnJIbJM=</password>
-      <serial>FGL205210E6</serial>
+      <serial>FGL232030TG</serial>
       <mgmt-ip-address>10.254.2.69</mgmt-ip-address>
       <var>
         <name>HOST_WAN_GATEWAY</name>
@@ -241,7 +241,7 @@ Using the following XML, modify the following:
       </var>
       <var>
         <name>HOST_WAN_IP</name>
-        <val>135.76.4.16</val>
+        <val>135.76.4.18</val>
       </var>
       <var>
         <name>HOST_WAN_IP_CIDRMASK</name>
@@ -350,7 +350,7 @@ Your XML should look something like this, remember yours should not say LUIS :)
       <type>ENCS-Secure</type>
       <username>LJqHOtqQyUfcdEOx</username>
       <password>$8$B3AHoth6MI9ZS0G/7yCHcVh6YqPP4mv1EATNFnJIbJM=</password>
-      <serial>FGL205210E6</serial>
+      <serial>FGL232030TG</serial>
       <mgmt-ip-address>10.254.2.69</mgmt-ip-address>
       <var>
         <name>HOST_WAN_GATEWAY</name>
@@ -358,7 +358,7 @@ Your XML should look something like this, remember yours should not say LUIS :)
       </var>
       <var>
         <name>HOST_WAN_IP</name>
-        <val>135.76.4.16</val>
+        <val>135.76.4.18</val>
       </var>
       <var>
         <name>HOST_WAN_IP_CIDRMASK</name>
