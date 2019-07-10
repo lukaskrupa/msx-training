@@ -29,6 +29,10 @@ CISCOCXTEST  branch-cpe  CISCOCXTEST  -    admin     -       -      -       -   
 
 `ncs_cli -u admin -C`
 
+### Clean Up of ENCS on NSO
+
+`branch-infra service-cleanup branchcpe <NAME>`
+
 ## NFVIS Commands
 
 ### Checking Secure-Overlay
